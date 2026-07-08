@@ -4,8 +4,16 @@ Full-stack implementation of the FinPay admin refund feature for the Sr. Full St
 Developer AI-assisted assessment.
 
 - **Backend:** Python 3.8 · FastAPI · SQLModel · SQLite
-- **Frontend:** Next.js (App Router) · React · Tailwind CSS · shadcn/ui
-- **Tests:** pytest (19 tests, all passing)
+- **Frontend:** Next.js (App Router) · React · Tailwind CSS · shadcn/ui · Chart.js
+- **Tests:** pytest (26 tests, all passing)
+
+## Screenshots
+
+### Admin dashboard (Next.js — `http://localhost:3100`)
+![Admin refund dashboard](docs/screenshots/dashboard.png)
+
+### API docs (FastAPI Swagger UI — `http://localhost:8100/docs`)
+![FastAPI Swagger docs](docs/screenshots/api-docs.png)
 
 ## Repository map
 
