@@ -1,0 +1,29 @@
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local database (regenerated + reseeded on startup)
+*.db
+*.sqlite
+*.sqlite3
+
+# TLS certs / private keys — never commit
+backend/certs/
+*.pem
+*.key
+
+# Node / Next.js
+node_modules/
+frontend/.next/
+frontend/out/
+
+# Env files (frontend/.env.local holds the API URL; recreate per README)
+.env
+.env.*
+!.env.example
+
+# Editor / OS noise
+.DS_Store
+*.log

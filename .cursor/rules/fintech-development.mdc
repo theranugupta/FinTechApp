@@ -1,0 +1,42 @@
+---
+description: Fintech safety rules for the FinPay refund module. Always applied.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Fintech Development Rules (FinPay Refund Module)
+
+Money is involved. Every change is high risk. Follow these rules or ask a human.
+
+## Do not guess
+- Business rules come ONLY from `CLAUDE.md`. Never infer them from field/variable names.
+- If a rule is missing or ambiguous, STOP and ask. Do not invent thresholds, rounding,
+  currency behavior, or status transitions.
+
+## Inspect before editing
+- Read the endpoint, models, business-logic module, and tests first.
+- Summarize current behavior from the code before proposing a change.
+
+## Smallest safe change
+- Solve only the requested problem.
+- No new dependencies, services, queues, caches, brokers, or abstractions without approval.
+- No unrelated file changes. No speculative features.
+
+## Backend is authoritative
+- ALL money rules (eligibility, amount bounds, over-refund, idempotency, auth,
+  merchant scope) are enforced on the backend.
+- Frontend validation is UX only and must be assumed bypassable.
+
+## Money integrity
+- Writes that affect refunds/balances run inside a DB transaction.
+- Guard against concurrent over-refund (row lock or re-check totals inside the txn).
+- Idempotency-Key is mandatory on the refund endpoint; retries never create a 2nd refund.
+- Same key + same payload → return original response. Same key + different payload → 409.
+
+## Secrets & PII
+- Never hardcode, expose, or log secrets, tokens, card/UPI details, or PII.
+- Mask sensitive fields in responses and UI. Keep `.env*` out of context.
+
+## Verify
+- Run `pytest` and review the full diff before accepting any AI change.
+- Confirm no unrelated files changed and no new dependencies were added.

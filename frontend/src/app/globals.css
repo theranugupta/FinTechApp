@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* LIGHT THEME — Swagger UI (FastAPI /docs) palette: #fafafa page, white blocks,
+     dark-slate text (#3b4151), soft green (#49cc90) + blue (#61affe) accents. */
+  :root {
+    --background: 0 0% 98%;            /* #fafafa page */
+    --foreground: 219 16% 28%;         /* #3b4151 slate text */
+    --card: 0 0% 100%;
+    --card-foreground: 219 16% 28%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 219 16% 28%;
+    --primary: 153 57% 54%;            /* swagger green #49cc90 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 14% 96%;
+    --secondary-foreground: 219 16% 30%;
+    --muted: 210 14% 96%;
+    --muted-foreground: 219 10% 48%;
+    --accent: 153 45% 93%;             /* very light green hover */
+    --accent-foreground: 153 45% 24%;
+    --destructive: 358 94% 62%;        /* swagger delete red #f93e3e */
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 14% 89%;
+    --input: 210 14% 89%;
+    --ring: 153 57% 44%;
+    --radius: 0.65rem;
+
+    /* FILL gradient — swagger green -> teal -> swagger blue (white text on top). */
+    --brand-from: 153 57% 54%;         /* #49cc90 green */
+    --brand-via: 180 55% 55%;          /* teal midpoint */
+    --brand-to: 212 98% 69%;           /* #61affe blue  */
+    /* TEXT gradient — deeper versions so gradient text stays legible on light bg. */
+    --brand-text-from: 153 55% 38%;
+    --brand-text-via: 185 50% 38%;
+    --brand-text-to: 212 70% 48%;
+  }
+
+  /* DARK THEME — dark slate with the same swagger green/blue accents (via the toggle). */
+  .dark {
+    --background: 219 18% 13%;
+    --foreground: 210 16% 95%;
+    --card: 219 16% 16%;
+    --card-foreground: 210 16% 95%;
+    --popover: 219 16% 16%;
+    --popover-foreground: 210 16% 95%;
+    --primary: 153 55% 50%;
+    --primary-foreground: 219 20% 10%;
+    --secondary: 219 14% 23%;
+    --secondary-foreground: 210 16% 95%;
+    --muted: 219 13% 23%;
+    --muted-foreground: 214 12% 66%;
+    --accent: 153 25% 24%;
+    --accent-foreground: 210 16% 95%;
+    --destructive: 358 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 219 13% 28%;
+    --input: 219 13% 28%;
+    --ring: 153 55% 50%;
+
+    --brand-from: 153 50% 44%;
+    --brand-via: 180 45% 46%;
+    --brand-to: 212 80% 58%;
+    --brand-text-from: 153 60% 60%;
+    --brand-text-via: 180 55% 60%;
+    --brand-text-to: 212 90% 72%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground min-h-screen;
+  }
+}
+
+@layer components {
+  .bg-brand-gradient {
+    background-image: linear-gradient(
+      120deg,
+      hsl(var(--brand-from)),
+      hsl(var(--brand-via)),
+      hsl(var(--brand-to))
+    );
+  }
+  .text-brand-gradient {
+    background-image: linear-gradient(
+      120deg,
+      hsl(var(--brand-text-from)),
+      hsl(var(--brand-text-via)),
+      hsl(var(--brand-text-to))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}

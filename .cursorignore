@@ -1,0 +1,31 @@
+# Keep secrets, PII, and infra config out of AI context.
+
+# Secrets & environment
+.env
+.env.*
+*.env
+**/secrets/**
+*.pem
+*.key
+*.p12
+credentials*.json
+service-account*.json
+
+# Production / infra config
+**/prod/**
+**/production/**
+terraform.tfstate*
+kubeconfig*
+
+# Data that may contain PII / payment info
+*.sqlite
+*.sqlite3
+*.db
+**/fixtures/real/**
+**/dumps/**
+
+# Dependencies / build artifacts (noise)
+**/node_modules/**
+**/.venv/**
+**/__pycache__/**
+**/.next/**
